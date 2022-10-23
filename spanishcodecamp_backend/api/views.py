@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from knox.views import LoginView as KnoxLoginView
-from rest_framework import status
+from rest_framework import mixins, status
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.decorators import (
     api_view,
@@ -10,9 +10,10 @@ from rest_framework.decorators import (
     permission_classes,
 )
 from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
 
-from api.models import User
-from api.serializers import UserSerializer
+from api.models import Course, Level, User
+from api.serializers import CourseSerializer, LevelSerializer, UserSerializer
 from api.utils import ResponseBadRequest, key_error_as_response_bad_request
 
 # Create your views here.
@@ -62,3 +63,20 @@ class LoginView(KnoxLoginView):
         user = serializer.validated_data["user"]
         login(request, user)
         return super(LoginView, self).post(request, format=format)
+
+
+class CourseView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Course.objects
+    serializer_class = CourseSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance: Course = self.get_object()
+
+        context = self.get_serializer_context()
+        context["detailed"] = True
+        return Response(self.get_serializer(instance, context=context).data)
+
+
+class LevelView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Level.objects
+    serializer_class = LevelSerializer

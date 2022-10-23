@@ -33,8 +33,8 @@ class Command(BaseCommand):
                 title=course_metadata.get("title"),
                 language=self.COURSE_LANGUAGES[course_metadata.get("language")],
                 description=description_markdown,
-                defaults={"path_name": course_name},
                 course_price=self.COURSE_PRICES[course_metadata.get("price")],
+                defaults={"path_name": course_path},
             )
 
             if created:
@@ -76,8 +76,6 @@ class Command(BaseCommand):
                     defaults={"position": level_position, "course": course_instance},
                     title=level_metadata["title"],
                     estimated_duration=level_metadata["estimated_duration"],
-                    instructions=os.path.join(level_path, "instructions.md"),
-                    tests=os.path.join(level_path, "tests.js"),
                 )
 
                 if created:
