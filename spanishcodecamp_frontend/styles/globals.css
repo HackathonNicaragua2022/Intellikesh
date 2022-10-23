@@ -9,3 +9,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+.main-background-gradient: hover {
+  background: linear-gradient(90deg, #5e03ff 0%, #ffc23c 99.99%, #5e03ff 100%);
+}
