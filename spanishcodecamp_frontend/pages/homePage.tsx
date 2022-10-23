@@ -2,6 +2,7 @@ import React from "react";
 import User from "../assets/img/user.png";
 import Image from "next/image";
 import Button from "../components/Button";
+import Price from "../components/Price";
 
 const HomePage = () => {
   return (
@@ -22,8 +23,9 @@ const HomePage = () => {
         className="mt-10 text-black duration-300 border-0 bg-yellow hover:bg-gradient-to-r from-purple to-yellow"
         formAction="submit"
       >
-        Iniciar Sesión
+        Empezar Gratis
       </Button>
+      <Price />
     </div>
   );
 };
