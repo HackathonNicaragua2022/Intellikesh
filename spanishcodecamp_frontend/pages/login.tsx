@@ -26,8 +26,8 @@ const Registro: NextPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-midnight">
-      <div className="absolute z-0 w-[1800px] rotate-[150deg] bg-gradient-to-r from-purple to-pink h-[1000px]" />
+    <div className="flex flex-col items-center justify-center w-screen h-screen bg-midnight">
+      <div className="fixed z-0 w-[3000px] rotate-[150deg] bg-gradient-to-r from-purple to-pink h-[1000px]" />
       <h1 className="relative mb-4 text-5xl font-semibold text-center text-white z-1">
         ¡Bienvenido!
       </h1>

@@ -42,6 +42,9 @@ class Course(models.Model):
     class Meta:
         verbose_name = _("curso")
 
+    def __str__(self) -> str:
+        return self.title
+
 
 class User(AbstractUser):
     class Membership(models.IntegerChoices):
