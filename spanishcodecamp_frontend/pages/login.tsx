@@ -6,6 +6,7 @@ import Input from "../components/Input";
 import { apiErrorsAtom, userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
+import GrandientButton from "../components/GradientButton";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
@@ -51,12 +52,7 @@ const Registro: NextPage = () => {
           />
         </div>
         <a href="dashboardPage/">
-          <Button
-            className="text-black border-black text-[2rem] mt-6 hover:border-white"
-            formAction="submit"
-          >
-            Iniciar Sesión
-          </Button>
+          <GrandientButton formAction="submit">Iniciar Sesión</GrandientButton>
         </a>
       </form>
     </div>
