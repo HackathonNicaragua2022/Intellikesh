@@ -1,7 +1,7 @@
 import React from "react";
 import PriceCard from "./PriceCard";
 
-const Price = () => {
+const PriceSection = () => {
   const premiun = [
     {
       name: "Acceso todos los cursos.",
@@ -33,7 +33,7 @@ const Price = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center text-white">
+    <div className="flex flex-col items-center text-white mt-[10rem]">
       <span className="text-[4rem] font-extrabold">Precios</span>
       <div className="flex items-end gap-[4rem]">
         <PriceCard
@@ -65,4 +65,4 @@ const Price = () => {
   );
 };
 
-export default Price;
+export default PriceSection;

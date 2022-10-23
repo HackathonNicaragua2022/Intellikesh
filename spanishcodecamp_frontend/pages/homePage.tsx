@@ -2,7 +2,8 @@ import React from "react";
 import User from "../assets/img/user.png";
 import Image from "next/image";
 import Button from "../components/Button";
-import Price from "../components/Price";
+import FlatButton from "../components/FlatButton";
+import PriceSection from "../components/PriceSection";
 
 const HomePage = () => {
   return (
@@ -19,13 +20,10 @@ const HomePage = () => {
         </span>
       </div>
       <Image src={User} alt="user-image" />
-      <Button
-        className="mt-10 text-black duration-300 border-0 bg-yellow hover:bg-gradient-to-r from-purple to-yellow"
-        formAction="submit"
-      >
+      <FlatButton className="text-[2rem] mt-[3rem]" formAction="submit">
         Empezar Gratis
-      </Button>
-      <Price />
+      </FlatButton>
+      <PriceSection />
     </div>
   );
 };
