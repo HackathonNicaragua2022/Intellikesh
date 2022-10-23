@@ -50,12 +50,14 @@ const Registro: NextPage = () => {
             placeholder="Escriba su contraseña"
           />
         </div>
-        <Button
-          className="text-black border-black text-[2rem] mt-6 hover:border-white"
-          formAction="submit"
-        >
-          Iniciar Sesión
-        </Button>
+        <a href="dashboardPage/">
+          <Button
+            className="text-black border-black text-[2rem] mt-6 hover:border-white"
+            formAction="submit"
+          >
+            Iniciar Sesión
+          </Button>
+        </a>
       </form>
     </div>
   );
