@@ -34,7 +34,7 @@ class Command(BaseCommand):
                 language=self.COURSE_LANGUAGES[course_metadata.get("language")],
                 description=description_markdown,
                 course_price=self.COURSE_PRICES[course_metadata.get("price")],
-                defaults={"path_name": course_path},
+                defaults={"path_name": course_name},
             )
 
             if created:
@@ -72,11 +72,17 @@ class Command(BaseCommand):
                 with open(os.path.join(level_path, "meta.json")) as file:
                     level_metadata: dict = json.load(file)
 
-                _, created = Level.objects.update_or_create(
-                    defaults={"position": level_position, "course": course_instance},
+                level_instance, created = Level.objects.update_or_create(
                     title=level_metadata["title"],
                     estimated_duration=level_metadata["estimated_duration"],
+                    defaults={"position": level_position, "course": course_instance},
                 )
+
+                level_instance.instructions.name = os.path.join(
+                    level_path, "instructions.md"
+                )
+                level_instance.tests.name = os.path.join(level_path, "tests.js")
+                level_instance.save()
 
                 if created:
                     self.stdout.write(
