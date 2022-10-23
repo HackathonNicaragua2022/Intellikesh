@@ -51,9 +51,7 @@ const Registro: NextPage = () => {
             placeholder="Escriba su contraseña"
           />
         </div>
-        <a href="dashboardPage/">
-          <GrandientButton formAction="submit">Iniciar Sesión</GrandientButton>
-        </a>
+        <GrandientButton formAction="submit">Iniciar Sesión</GrandientButton>
       </form>
     </div>
   );
