@@ -16,4 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+admin.site.site_header = "Administración Spanish Code Camp"
+admin.site.index_title = "Administración SCC"
+admin.site.site_title = "Administración SCC"
+
+
 urlpatterns = [path("admin/", admin.site.urls), path("api/", include("api.urls"))]

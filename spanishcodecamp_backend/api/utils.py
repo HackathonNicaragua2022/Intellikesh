@@ -1,5 +1,7 @@
 import functools
+import os
 
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
@@ -43,3 +45,7 @@ def key_error_as_response_bad_request(func):
         return return_value
 
     return decorator
+
+
+def get_courses_path():
+    return os.path.join(settings.BASE_DIR, "courses")

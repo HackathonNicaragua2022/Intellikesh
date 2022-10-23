@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "spanish_code_camp",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
     }
 }
 

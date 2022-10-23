@@ -10,6 +10,8 @@ django-rest-knox = "*"
 pyopenssl = "*"
 psycopg2 = "*"
 django-cors-headers = "*"
+django-extensions = "*"
+pygraphviz = "*"
 
 [dev-packages]
 flake8 = "*"

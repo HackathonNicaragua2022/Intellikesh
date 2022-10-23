@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cadc30d0d5e2da634e88de8e05fc2db34b96b19f096eac0d65bc45f0193eccc5"
+            "sha256": "1e1ae117cc362cf09e858ed442a3d29adf64b90d4cc92444d16770811021126b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -141,6 +141,14 @@
             "index": "pypi",
             "version": "==3.13.0"
         },
+        "django-extensions": {
+            "hashes": [
+                "sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4",
+                "sha256:421464be390289513f86cb5e18eb43e5dc1de8b4c27ba9faa3b91261b0d67e09"
+            ],
+            "index": "pypi",
+            "version": "==3.2.1"
+        },
         "django-rest-knox": {
             "hashes": [
                 "sha256:4595f1dc23d6e41af7939e5f2d8fdaf6ade0a74a656218e7b56683db5566fcc9",
@@ -180,6 +188,13 @@
                 "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
             ],
             "version": "==2.21"
+        },
+        "pygraphviz": {
+            "hashes": [
+                "sha256:457e093a888128903251a266a8cc16b4ba93f3f6334b3ebfed92c7471a74d867"
+            ],
+            "index": "pypi",
+            "version": "==1.10"
         },
         "pyopenssl": {
             "hashes": [
