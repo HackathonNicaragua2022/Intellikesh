@@ -1,8 +1,8 @@
 import axios from "axios";
 import { NextPage } from "next";
 import { useSetRecoilState } from "recoil";
-import Button from "../components/Button";
 import Input from "../components/Input";
+import GrandientButton from "../components/GradientButton";
 import { apiErrorsAtom, userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
@@ -69,12 +69,7 @@ const Registro: NextPage = () => {
           placeholder="Escriba su usuario"
         />
         <div className="flex justify-center w-full col-span-2">
-          <Button
-            className="text-black border-black text-[2rem] mt-6 hover:border-white"
-            formAction="submit"
-          >
-            Registrarse
-          </Button>
+          <GrandientButton formAction="submit">Registrarse</GrandientButton>
         </div>
       </form>
     </div>
