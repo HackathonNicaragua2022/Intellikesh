@@ -2,12 +2,23 @@ import os
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 
 from api.consts import LEVELS
 from api.utils import get_courses_path
 
 # Create your models here.
+
+
+def get_level_path(instance, filename):
+    return os.path.join(
+        get_courses_path(),
+        instance.course.path_name,
+        LEVELS,
+        instance.position,
+        filename,
+    )
 
 
 class Course(models.Model):
@@ -33,7 +44,9 @@ class Course(models.Model):
 
     @property
     def course_duration(self) -> int:
-        return self.level_set.all().aggregate()
+        return self.levels.all().aggregate(Sum("estimated_duration"))[
+            "estimated_duration__sum"
+        ]
 
     @property
     def readable_name(self):
@@ -77,21 +90,16 @@ class Level(models.Model):
         related_name="levels",
     )
 
-    def level_path(self=None):
-        if self is None:
-            return
-        return os.path.join(
-            get_courses_path(), self.course.path_name, LEVELS, self.position
-        )
-
     position = models.PositiveSmallIntegerField(_("Posición"))
 
-    instructions = models.FilePathField(
-        _("Instrucciones"), path=level_path, match=r".*\.md", max_length=254
+    instructions = models.FileField(
+        _("Instrucciones"), upload_to=get_level_path, max_length=254
     )
 
-    tests = models.FilePathField(
-        _("Pruebas del curso"), path=level_path, match=r".*\.js", max_length=254
+    tests = models.FileField(
+        _("Pruebas del curso"),
+        upload_to=get_level_path,
+        max_length=254,
     )
 
     estimated_duration = models.PositiveSmallIntegerField(

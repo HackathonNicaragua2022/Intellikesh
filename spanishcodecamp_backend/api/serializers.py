@@ -27,12 +27,30 @@ class CompletedLevelSerializer(serializers.ModelField):
 
 
 class LevelSerializer(serializers.ModelSerializer):
-    class Level:
+    class Meta:
         model = Level
         fields = "__all__"
+
+    def to_representation(self, instance):
+        obj = super().to_representation(instance)
+        with open(obj["instructions"], "r") as file:
+            obj["instructions"] = file.read()
+
+        with open(obj["tests"], "r") as file:
+            obj["tests"] = file.read()
+
+        return obj
 
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = "__all__"
+        exclude = ["path_name"]
+
+    def to_representation(self, instance: Course):
+        obj = super().to_representation(instance)
+        if self.context.get("detailed") is True:
+            obj["levels"] = LevelSerializer(instance.levels.all(), many=True).data
+        obj["language_verbose"] = instance.get_language_display()
+        obj["estimated_duration"] = instance.course_duration
+        return obj
