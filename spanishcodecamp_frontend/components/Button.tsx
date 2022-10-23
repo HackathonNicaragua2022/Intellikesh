@@ -12,7 +12,7 @@ const Button: FC<ButtonProps> = (props) => {
   [props, className] = popFromDict(props, "className");
   return (
     <button
-      className={`hover:bg-gradient-to-r transition duration-300 from-[#5E03FF] to-[#FFC23C] hover:border-opacity-0 rounded-2xl text-3xl ${className}`}
+      className={`px-3 py-1 m-2 duration-300 text-white border-2 border-white rounded-lg hover:border-blackPurple text-[1.2rem] hover:bg-gradient-to-r from-pink to-purple`}
       {...props}
     />
   );
