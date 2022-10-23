@@ -22,13 +22,10 @@ const NavBar = () => {
         </li>
       </ul>
       <div className="">
-        <Button
-          className="self-center w-2/5 p-4 mt-12 text-xs border-4 border-midnight"
-          formAction="submit"
-        >
-          Iniciar Sesión
+        <Button formAction="submit">Iniciar Sesión</Button>
+        <Button className="text-black bg-white" formAction="submit">
+          Registrarse
         </Button>
-        <Button formAction="submit">Registrarse</Button>
       </div>
     </div>
   );
