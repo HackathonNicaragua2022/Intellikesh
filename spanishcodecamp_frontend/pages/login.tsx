@@ -26,13 +26,14 @@ const Registro: NextPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-midnight">
-      <h1 className="mb-4 text-5xl font-semibold text-center text-white">
+    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-midnight">
+      <div className="absolute z-0 w-[1800px] rotate-[150deg] bg-gradient-to-r from-purple to-pink h-[1000px]" />
+      <h1 className="relative mb-4 text-5xl font-semibold text-center text-white z-1">
         ¡Bienvenido!
       </h1>
 
       <form
-        className="flex flex-col items-center justify-center w-10/12 p-16 bg-white xl:w-1/2 h-4/6 rounded-3xl"
+        className="relative flex flex-col items-center justify-center w-10/12 p-16 bg-white xl:w-1/2 h-4/6 rounded-3xl z-1"
         onSubmit={handleSubmit}
       >
         <div className="w-4/5">
@@ -50,7 +51,7 @@ const Registro: NextPage = () => {
           />
         </div>
         <Button
-          className="self-center w-2/5 p-4 mt-12 text-xs border-4 border-midnight"
+          className="text-black border-black text-[2rem] mt-6 hover:border-white"
           formAction="submit"
         >
           Iniciar Sesión

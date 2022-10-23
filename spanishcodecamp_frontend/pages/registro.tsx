@@ -26,13 +26,13 @@ const Registro: NextPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-midnight">
-      <h1 className="mb-4 text-6xl font-extrabold tracking-wider text-center text-white">
+    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-midnight">
+      <div className="absolute z-0 w-[1800px] rotate-[150deg] bg-gradient-to-r from-purple to-pink h-[1000px]" />
+      <h1 className="relative mb-4 text-6xl font-extrabold tracking-wider text-center text-white z-1">
         Crea tu cuenta
       </h1>
-
       <form
-        className="grid w-10/12 grid-cols-2 gap-12 px-16 py-8 bg-white xl:w-1/2 h-4/6 rounded-3xl"
+        className="relative grid grid-cols-2 gap-12 px-16 py-8 bg-white z-1 xl:w-1/2 h-5/6 rounded-3xl"
         onSubmit={handleSubmit}
       >
         <Input
@@ -70,7 +70,7 @@ const Registro: NextPage = () => {
         />
         <div className="flex justify-center w-full col-span-2">
           <Button
-            className="self-center w-3/5 p-3 text-xs border-4 border-midnight"
+            className="text-black border-black text-[2rem] mt-6 hover:border-white"
             formAction="submit"
           >
             Registrarse
