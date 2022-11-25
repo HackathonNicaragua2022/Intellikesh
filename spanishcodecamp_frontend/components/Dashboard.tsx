@@ -8,8 +8,8 @@ import {
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col items-center">
-      <header className="text-white text-[2rem] flex justify-between items-center p-4 w-full">
+    <div className="flex flex-col items-center px-10">
+      <header className="text-white text-[2rem] flex justify-between items-center py-4 w-full">
         <span>Hola, Oscar Marin!</span>
         <div className="flex gap-4">
           <CardItem title="Cursos" amount={8} icon={faHouse} />
@@ -17,7 +17,7 @@ const Dashboard = () => {
           <CardItem title="Proyectos" amount={12} icon={faFileLines} />
         </div>
       </header>
-      <main className=" w-[90%] h-[600px] bg-black rounded-xl"></main>
+      <main className=" w-[100%] h-[600px] bg-assent rounded-xl"></main>
     </div>
   );
 };

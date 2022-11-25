@@ -8,7 +8,6 @@ const NonFieldErrorCatcher: FC = () => {
 
   let errorText = "";
   for (const [key, value] of Object.entries(errors)) {
-    console.log(key === "non_field_errors");
     if (key === "non_field_errors") {
       errorText = value;
       break;

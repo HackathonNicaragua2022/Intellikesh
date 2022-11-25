@@ -1,12 +1,11 @@
 import axios from "axios";
 import { NextPage } from "next";
 import { useSetRecoilState } from "recoil";
-import Button from "../components/Button";
 import Input from "../components/Input";
 import { apiErrorsAtom, userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
-import GrandientButton from "../components/GradientButton";
+import Button from "../components/Button";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
@@ -51,7 +50,10 @@ const Registro: NextPage = () => {
             placeholder="Escriba su contraseña"
           />
         </div>
-        <GrandientButton formAction="submit">Iniciar Sesión</GrandientButton>
+        <br />
+        <Button size="text-[1.6rem]" type="light">
+          Iniciar Sesión
+        </Button>
       </form>
     </div>
   );

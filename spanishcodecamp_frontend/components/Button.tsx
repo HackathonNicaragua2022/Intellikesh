@@ -1,21 +1,28 @@
-import { ButtonHTMLAttributes, FC } from "react";
-import { popFromDict } from "../utils/functions";
+import React, { FC } from "react";
 
-interface ButtonProps
-  extends React.DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {}
+interface ButtonProps {
+  type: string;
+  size?: string;
+  children: string;
+}
 
 const Button: FC<ButtonProps> = (props) => {
-  let className, label: string;
-  [props, className] = popFromDict(props, "className");
-  return (
-    <button
-      className={`px-3 py-1 m-2 duration-300 text-white border-2 border-white rounded-lg hover:border-blackPurple hover:bg-gradient-to-r from-pink to-purple ${className}`}
-      {...props}
-    />
-  );
+  const types: any = {
+    fill: `px-3 py-1 m-2 duration-300 text-black bg-white rounded-lg hover:bg-yellow ${
+      props.size ?? ""
+    }`,
+    invertfill: `px-3 py-1 m-2 duration-300 text-black bg-yellow rounded-lg hover:bg-white ${
+      props.size ?? "text-[1.5rem]"
+    }`,
+    light: `px-3 py-1 m-2 duration-300 text-black border-2 border-midnight rounded-lg hover:text-white hover:bg-midnight ${
+      props.size ?? "text-[1.5rem]"
+    }`,
+    outlined: `px-3 py-1 m-2 duration-300 text-white border-2 border-white rounded-lg hover:border-yellow hover:bg-blackPurple ${
+      props.size ?? ""
+    } `,
+  };
+
+  return <button className={types[props.type]}>{props.children}</button>;
 };
 
 export default Button;

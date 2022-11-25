@@ -13,10 +13,15 @@ module.exports = {
         purple: '#5E03FF',
         midnight: '#100720',
         yellow: '#FFC23C',
-        gray: '#9F9CA6',
-        blackBlue: '#182747',
-        clearPurple: "#675587"
+        card: "#1F1D2B",
+        assent: "#181820",
+        complement: "#252936",
+        textColor: "#808191",
+        secondary: "#353340",
+        primary: "#6979F8",
 
+        orange: "#FF7551",
+        blue: "#32A7E2",
       },
     },
   },

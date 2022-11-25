@@ -1,9 +1,10 @@
 import React from "react";
 import User from "../assets/img/user.png";
 import Image from "next/image";
-import Button from "../components/Button";
-import FlatButton from "../components/FlatButton";
 import PriceSection from "../components/PriceSection";
+import Button from "../components/Button";
+import SideButton from "../components/sideButton";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = () => {
   return (
@@ -20,9 +21,8 @@ const HomePage = () => {
         </span>
       </div>
       <Image src={User} alt="user-image" />
-      <FlatButton className="text-[2rem] mt-[3rem]" formAction="submit">
-        Empezar Gratis
-      </FlatButton>
+      <br />
+      <Button type="invertfill">Empezar Gratis</Button>
       <PriceSection />
     </div>
   );
