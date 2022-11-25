@@ -19,14 +19,17 @@ class ReadOnlyAdmin(admin.ModelAdmin):
 
 @admin.register(Level)
 class LevelAdmin(ReadOnlyAdmin):
-    fields = ["title", "course", "position", "estimated_duration"]
-    list_display = ["title", "course", "position", "estimated_duration"]
+    fields = ["title", "course", "position", "estimated_duration", "instructions"]
+    list_display = ["title", "course", "position", "estimated_duration", "instructions"]
+    list_filter = ["course"]
+    search_fields = ["title", "course"]
 
 
 @admin.register(Course)
 class CourseAdmin(ReadOnlyAdmin):
     fields = ["title", "description"]
     list_display = ["title", "description"]
+    search_fields = ["title"]
 
 
 @admin.register(CourseBought)

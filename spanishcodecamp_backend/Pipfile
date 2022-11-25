@@ -12,6 +12,7 @@ psycopg2 = "*"
 django-cors-headers = "*"
 django-extensions = "*"
 pygraphviz = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 flake8 = "*"
