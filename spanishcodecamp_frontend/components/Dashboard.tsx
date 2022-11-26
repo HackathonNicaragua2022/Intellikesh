@@ -5,6 +5,7 @@ import {
   faDumbbell,
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
+import StatusBar from "./StatusBar";
 
 const Dashboard = () => {
   return (
@@ -17,7 +18,9 @@ const Dashboard = () => {
           <CardItem title="Proyectos" amount={12} icon={faFileLines} />
         </div>
       </header>
-      <main className=" w-[100%] h-[600px] bg-assent rounded-xl"></main>
+      <main className=" w-[100%] h-[600px] bg-assent p-8 rounded-xl">
+        <StatusBar />
+      </main>
     </div>
   );
 };

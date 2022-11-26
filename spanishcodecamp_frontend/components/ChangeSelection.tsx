@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import dashboardPage from "../pages/dashboardPage";
+import Dashboard from "./Dashboard";
 
 interface ChangeSideSelecion {
   onChange: string;
@@ -8,9 +8,9 @@ interface ChangeSideSelecion {
 const ChangeSideSelecion: FC<ChangeSideSelecion> = (props) => {
   switch (props.onChange) {
     case "dashboard":
-      return <dashboardPage />;
+      return <Dashboard />;
     default:
-      return <dashboardPage />;
+      return <Dashboard />;
   }
 };
 
