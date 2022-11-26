@@ -48,7 +48,7 @@ const Dashboard = () => {
           level="Nivel 1"
           image={Two}
         />
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 xl:grid-cols-3">
           <CourseCard
             image={One}
             level="10 niveles restantes"
