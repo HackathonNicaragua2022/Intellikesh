@@ -22,7 +22,6 @@ def get_level_path(instance, filename):
 
 
 class Course(models.Model):
-    path_name = models.CharField(max_length=254, unique=True)
     description = models.TextField(_("Descripción"), max_length=1000, null=True)
     title = models.CharField(_("Título"), max_length=254)
 
