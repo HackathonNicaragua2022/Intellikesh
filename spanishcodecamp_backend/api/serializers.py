@@ -45,7 +45,6 @@ class LevelSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        exclude = ["path_name"]
 
     def to_representation(self, instance: Course):
         obj = super().to_representation(instance)
