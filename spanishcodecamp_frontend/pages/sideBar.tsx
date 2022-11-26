@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/img/logo-1.png";
+import Logo from "../assets/img/new.png";
 import Image from "next/image";
 import {
   faComputer,
@@ -9,8 +9,8 @@ import {
   faWallet,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import Dashboard from "../components/Dashboard";
 import ButtonItem from "../components/ButtonItem";
+import ChangeSideSelecion from "../components/ChangeSelection";
 
 function SideBar() {
   const [change, setChange] = useState("dashboard");
@@ -39,18 +39,11 @@ function SideBar() {
 
   return (
     <div className="h-screen">
-      <nav className="h-full w-[16.5rem] rounded-lg bg-card fixed top-0 left-0 px-[10px] py-[14px] z-50">
+      <nav className="h-full w-[16.5rem] bg-card fixed top-0 left-0 px-[10px] py-[14px] z-50">
         <header className="relative">
           <div className="flex items-center gap-5">
-            <div className="flex items-center justify-center gap-4 text-white">
-              <Image src={Logo} alt="logo" />
-              <span className="text-[1.3rem] font-semibold">
-                Spanish
-                <br />
-                Code
-                <br />
-                Camp
-              </span>
+            <div className="relative flex items-center w-full h-[5rem] justify-center gap-4 text-white">
+              <Image src={Logo} alt="logo" layout="fill" />
             </div>
           </div>
         </header>
@@ -93,7 +86,7 @@ function SideBar() {
       </nav>
       <section className="left-[16.5rem] flex items-start h-screen w-[calc(100%-16.5rem)] relative bg-white">
         <div className="w-full h-screen bg-card">
-          <Dashboard />
+          <ChangeSideSelecion onChange={change} />
         </div>
       </section>
     </div>
