@@ -27,7 +27,7 @@ const PriceCard: FC<PriceCard> = (props) => {
       className={`flex flex-col mt-8 duration-300 items-center text-white py-8 px-[2rem] gap-4 rounded-3xl
       ${style[props.type]} ${
         props.type === 2 ? "h-[650px]" : "h-[570px]"
-      } w-[350px]`}
+      } w-[300px] md:w-[350px]`}
     >
       <span className="text-[2rem] font-bold">{props.title}</span>
       <span className="text-[1.3rem] text-center">{props.description}</span>

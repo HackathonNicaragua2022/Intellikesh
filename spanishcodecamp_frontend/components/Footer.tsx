@@ -4,7 +4,7 @@ import Logo from "../assets/img/logo-1.png";
 
 const Footer = () => {
   return (
-    <div className="flex justify-between items-center h-[10rem] w-full text-white px-10">
+    <div className="flex flex-col md:flex-row justify-between items-center h-[10rem] w-full text-white px-10">
       <div className="flex items-center justify-center gap-4 text-white">
         <Image src={Logo} alt="logo" />
         <span className="text-[1.2rem] font-semibold">SpanishCodeCamp</span>

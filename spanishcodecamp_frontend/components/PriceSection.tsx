@@ -35,7 +35,7 @@ const PriceSection = () => {
   return (
     <div className="flex flex-col items-center text-white mt-[10rem]">
       <span className="text-[4rem] font-extrabold">Precios</span>
-      <div className="flex items-end gap-[4rem]">
+      <div className="flex flex-col xl:flex-row items-end gap-[4rem]">
         <PriceCard
           type={1}
           title="Plan Gratuito"

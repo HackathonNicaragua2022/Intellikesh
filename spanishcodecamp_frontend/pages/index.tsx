@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import HomePage from "./homePage";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import ElevateAppBar from "../components/ElevationBar";
 
 const Home: NextPage = () => {
   return (
