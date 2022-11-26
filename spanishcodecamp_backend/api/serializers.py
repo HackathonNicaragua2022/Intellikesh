@@ -45,6 +45,7 @@ class LevelSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
+        fields = "__all__"
 
     def to_representation(self, instance: Course):
         obj = super().to_representation(instance)
