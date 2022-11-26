@@ -22,7 +22,6 @@ def get_level_path(instance, filename):
 
 
 class Course(models.Model):
-    path_name = models.CharField(max_length=254, unique=True)
     description = models.TextField(_("Descripción"), max_length=1000, null=True)
     title = models.CharField(_("Título"), max_length=254)
 
@@ -92,15 +91,9 @@ class Level(models.Model):
 
     position = models.PositiveSmallIntegerField(_("Posición"))
 
-    instructions = models.FileField(
-        _("Instrucciones"), upload_to=get_level_path, max_length=254
-    )
+    instructions = models.TextField(_("Instrucciones"))
 
-    tests = models.FileField(
-        _("Pruebas del curso"),
-        upload_to=get_level_path,
-        max_length=254,
-    )
+    tests = models.TextField(_("Pruebas del curso"))
 
     estimated_duration = models.PositiveSmallIntegerField(
         _("Duracion estimada (en minutos)")

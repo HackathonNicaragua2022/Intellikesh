@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -21,10 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-vm6@lw4&d-h#j$26xbbvn70y4_(@(i*fzra%*r$khb-!+$2%q_"
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-+_m$-rbnl%)+ppnfp2!^_y-p0#h5_hu5%bf%*q1c+ix1i^b@n^",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True") != "False"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -36,6 +40,7 @@ INSTALLED_APPS = [
     "knox",
     "corsheaders",
     "jazzmin",
+    "django_ace",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -84,8 +89,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "spanish_code_camp",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "USER": os.getenv("DJANGO_DB_USER", "postgres"),
+        "PASSWORD": os.getenv("DJANGO_DB_PASSWORD", "postgres"),
     }
 }
 
@@ -114,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Managua"
 
 USE_I18N = True
 
@@ -145,6 +150,8 @@ LANGUAGE_CODE = "es-NI"
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
+    "http://spanishcodecamp.tech",
+    "https://spanishcodecamp.tech",
 ]
 
 
