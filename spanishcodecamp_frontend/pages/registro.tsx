@@ -1,16 +1,17 @@
 import axios from "axios";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
+import Button from "../components/Button";
 import Input from "../components/Input";
-import { apiErrorsAtom, userDataAtom } from "../state/atoms";
+import { userDataAtom } from "../state/atoms";
+import { apiErrorsSelector } from "../state/selectors";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
-import Button from "../components/Button";
-import { useRouter } from "next/router";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
-  const setApiErrors = useSetRecoilState(apiErrorsAtom);
+  const setApiErrors = useSetRecoilState(apiErrorsSelector);
   const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
