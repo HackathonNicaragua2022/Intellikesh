@@ -1,13 +1,13 @@
 import axios from "axios";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
+import Button from "../components/Button";
 import Input from "../components/Input";
-import { apiErrorsAtom, userDataAtom } from "../state/atoms";
+import { userDataAtom } from "../state/atoms";
+import { apiErrorsSelector } from "../state/selectors";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
-import Button from "../components/Button";
-import { useRouter } from "next/router";
-import { apiErrorsSelector } from "../state/selectors";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
@@ -23,7 +23,7 @@ const Registro: NextPage = () => {
     axios
       .post(API_URL + "login/", formData, axiosConfig)
       .then((res) => {
-        setUserData(res.data);
+        setUserData(res.data.user);
         router.push("sideBar");
         window.localStorage.setItem("token", `Bearer ${res.data.token}`);
       })

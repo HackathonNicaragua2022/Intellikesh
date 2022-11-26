@@ -1,6 +1,6 @@
-import { faHouse, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface CardItem {
   title: string;
@@ -10,7 +10,7 @@ interface CardItem {
 
 const CardItem: FC<CardItem> = (props) => {
   return (
-    <div className="bg-assent w-[12rem] h-[8rem] rounded-xl p-1">
+    <div className="bg-assent xl:w-[12rem] xl:h-[8rem] px-4 rounded-xl py-2">
       <div className="flex items-center justify-around py-1">
         <FontAwesomeIcon
           className="text-[1.5rem] pr-[2rem] flex items-center justify-center"

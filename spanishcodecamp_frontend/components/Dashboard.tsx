@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import CardItem from "./CardItem";
-import { useEffect } from "react";
 import {
   faComputer,
   faDumbbell,
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
-import StatusBar from "./StatusBar";
-import CourseCard from "./CourseCard";
-import One from "assets/img/Python.png";
 import Two from "assets/img/JavaScript.png";
+import One from "assets/img/Python.png";
 import Three from "assets/img/type.png";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { generateAxiosConfig } from "../utils/functions";
+import CardItem from "./CardItem";
+import CourseCard from "./CourseCard";
+import StatusBar from "./StatusBar";
 
 const Dashboard = () => {
   const [currentCourse, setCurrentCourse] = useState<any>({});
+  const user = useRecoilValue(userDataAtom);
 
   useEffect(() => {
     const axiosConfig = generateAxiosConfig(window);
@@ -33,11 +35,11 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col items-center px-10">
       <header className="text-white text-[2rem] flex justify-between items-center py-4 w-full">
-        <span>Hola, Oscar Marin!</span>
+        <span>Hola, {user && `${user.first_name} ${user.last_name}`}</span>
         <div className="flex gap-4">
-          <CardItem title="Cursos" amount={8} icon={faComputer} />
-          <CardItem title="Practicas" amount={5} icon={faDumbbell} />
-          <CardItem title="Proyectos" amount={12} icon={faFileLines} />
+          <CardItem title="Cursos" amount={0} icon={faComputer} />
+          <CardItem title="Practicas" amount={0} icon={faDumbbell} />
+          <CardItem title="Proyectos" amount={0} icon={faFileLines} />
         </div>
       </header>
       <main className="flex flex-col justify-between w-[100%] h-[600px] bg-assent p-[2.5rem] rounded-xl">
