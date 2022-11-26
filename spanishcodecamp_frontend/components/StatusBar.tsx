@@ -1,8 +1,7 @@
 import React, { FC } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComputer } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/router";
 
 interface StatusBar {
   image: StaticImageData;
@@ -11,6 +10,8 @@ interface StatusBar {
 }
 
 const StatusBar: FC<StatusBar> = ({ image, courseName, level }) => {
+  const router = useRouter();
+
   return (
     <div className="w-full h-[240px] p-6 bg-complement rounded-xl">
       <section className="flex items-center justify-between pb-4 border-b-2 border-textColor">
@@ -24,7 +25,11 @@ const StatusBar: FC<StatusBar> = ({ image, courseName, level }) => {
           </div>
         </article>
         <article>
-          <Button size="text-[1.2rem]" type="invertfill">
+          <Button
+            onClick={() => router.push("Course")}
+            size="text-[1.2rem]"
+            type="invertfill"
+          >
             Continuar
           </Button>
         </article>
@@ -41,7 +46,7 @@ const StatusBar: FC<StatusBar> = ({ image, courseName, level }) => {
         </div>
         <div>
           <Button size="text-[1.2rem]" type="outlined">
-            Continuar
+            Empezar
           </Button>
         </div>
       </section>

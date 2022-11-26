@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CardItem from "./CardItem";
 import { useEffect } from "react";
 import {
@@ -16,12 +16,14 @@ import { API_URL } from "../utils/consts";
 import { generateAxiosConfig } from "../utils/functions";
 
 const Dashboard = () => {
+  const [currentCourse, setCurrentCourse] = useState<any>({});
+
   useEffect(() => {
     const axiosConfig = generateAxiosConfig(window);
     axios
       .get(API_URL + "courses/2", axiosConfig)
       .then((res) => {
-        console.log(res.data);
+        setCurrentCourse(res.data);
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -40,9 +42,9 @@ const Dashboard = () => {
       </header>
       <main className="flex flex-col justify-between w-[100%] h-[600px] bg-assent p-[2.5rem] rounded-xl">
         <StatusBar
-          courseName="Python Profesional"
-          level="10 Niveles restantes"
-          image={One}
+          courseName={currentCourse?.title ?? "-"}
+          level="Nivel 1"
+          image={Two}
         />
         <div className="flex justify-between">
           <CourseCard

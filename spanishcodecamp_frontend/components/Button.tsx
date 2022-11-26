@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, MouseEventHandler } from "react";
 
 interface ButtonProps {
   type: string;
   size?: string;
   children: string;
+  onClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -22,7 +23,11 @@ const Button: FC<ButtonProps> = (props) => {
     } `,
   };
 
-  return <button className={types[props.type]}>{props.children}</button>;
+  return (
+    <button onClick={props.onClick} className={types[props.type]}>
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;
