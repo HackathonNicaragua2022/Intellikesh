@@ -6,10 +6,13 @@ import { apiErrorsAtom, userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
 import Button from "../components/Button";
+import { useRouter } from "next/router";
+import { apiErrorsSelector } from "../state/selectors";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
-  const setApiErrors = useSetRecoilState(apiErrorsAtom);
+  const setApiErrors = useSetRecoilState(apiErrorsSelector);
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,11 +21,16 @@ const Registro: NextPage = () => {
     const formData = formDataAsDict(event);
 
     axios
-      .post(API_URL + "register/", formData, axiosConfig)
+      .post(API_URL + "login/", formData, axiosConfig)
       .then((res) => {
         setUserData(res.data);
+        router.push("sideBar");
+        window.localStorage.setItem("token", String(res.data.token));
       })
-      .catch((err) => setApiErrors(err));
+      .catch((err) => {
+        console.log(err.response.data);
+        setApiErrors(err);
+      });
   };
 
   return (
@@ -40,14 +48,14 @@ const Registro: NextPage = () => {
           <Input
             name="username"
             descriptiveText="Nombre de usuario"
-            placeholder="Usuario"
+            placeholder="Ingrese el Usuario"
           />
           <div className="h-12" />
           <Input
             name="password"
             descriptiveText="Contraseña"
             type="password"
-            placeholder="Contraseña"
+            placeholder="Ingrese la Contraseña"
           />
         </div>
         <br />

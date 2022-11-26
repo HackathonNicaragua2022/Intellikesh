@@ -21,8 +21,9 @@ export function popFromDict(
 }
 
 export const generateAxiosConfig = (window: Window) => {
+  console.log(window.localStorage.getItem("token"));
   return {
-    headers: { Authorization: window.sessionStorage.getItem("token") ?? false },
+    headers: { Authorization: window.localStorage.getItem("token") ?? false },
   };
 };
 

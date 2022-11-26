@@ -6,10 +6,12 @@ import { apiErrorsAtom, userDataAtom } from "../state/atoms";
 import { API_URL } from "../utils/consts";
 import { formDataAsDict, generateAxiosConfig } from "../utils/functions";
 import Button from "../components/Button";
+import { useRouter } from "next/router";
 
 const Registro: NextPage = () => {
   const setUserData = useSetRecoilState(userDataAtom);
   const setApiErrors = useSetRecoilState(apiErrorsAtom);
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,8 +23,13 @@ const Registro: NextPage = () => {
       .post(API_URL + "register/", formData, axiosConfig)
       .then((res) => {
         setUserData(res.data);
+        router.push("login/");
+        console.log(res.data);
       })
-      .catch((err) => setApiErrors(err));
+      .catch((err) => {
+        console.log(err.response.data);
+        setApiErrors(err);
+      });
   };
 
   return (

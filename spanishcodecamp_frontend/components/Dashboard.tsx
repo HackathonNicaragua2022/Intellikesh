@@ -1,5 +1,6 @@
 import React from "react";
 import CardItem from "./CardItem";
+import { useEffect } from "react";
 import {
   faComputer,
   faDumbbell,
@@ -10,8 +11,23 @@ import CourseCard from "./CourseCard";
 import One from "assets/img/Python.png";
 import Two from "assets/img/JavaScript.png";
 import Three from "assets/img/type.png";
+import axios from "axios";
+import { API_URL } from "../utils/consts";
+import { generateAxiosConfig } from "../utils/functions";
 
 const Dashboard = () => {
+  const axiosConfig = generateAxiosConfig(window);
+  useEffect(() => {
+    axios
+      .get(API_URL + "courses/2", axiosConfig)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  }, [axiosConfig]);
+
   return (
     <div className="flex flex-col items-center px-10">
       <header className="text-white text-[2rem] flex justify-between items-center py-4 w-full">

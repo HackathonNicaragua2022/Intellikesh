@@ -43,8 +43,8 @@ const Input: FC<InputProps> = (props) => {
 
       <input
         {...cleanedProps}
-        className={`w-full rounded-xl border-midnight border-2 border-opacity-20 h-16 text-2xl px-4 ${
-          inputError && "border-error"
+        className={`w-full rounded-xl border-midnight border-2 h-16 text-2xl px-4 ${
+          inputError && "border-red-500"
         }`}
       />
       {inputError && <ErrorTag errorText={inputError} />}

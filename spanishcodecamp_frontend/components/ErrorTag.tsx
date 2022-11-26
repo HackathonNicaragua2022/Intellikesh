@@ -8,7 +8,7 @@ interface ErrorTagProps {
 const ErrorTag: FC<ErrorTagProps> = ({ errorText }) => {
   return (
     <label className="relative flex items-center gap-1 pt-1">
-      <FiAlertCircle className=" text-error" />
+      <FiAlertCircle className="text-red-500 " />
       <span className="text-sm label-text text-error">{errorText}</span>
     </label>
   );
