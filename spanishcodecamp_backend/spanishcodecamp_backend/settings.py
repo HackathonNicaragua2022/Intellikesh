@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = "es"
+LANGUAGE_CODE = "es-es"
 
 TIME_ZONE = "America/Managua"
 
@@ -148,7 +148,6 @@ REST_FRAMEWORK = {
 
 # Token TTL is set at 1000 days for testing, all tokens will be deleted after the tests
 REST_KNOX = {"AUTH_HEADER_PREFIX": "Bearer", "TOKEN_TTL": timedelta(days=1000)}
-LANGUAGE_CODE = "es-NI"
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",

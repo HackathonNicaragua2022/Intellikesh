@@ -23,7 +23,7 @@ const NonFieldErrorCatcher: FC = () => {
   return (
     <ModalText
       text={errorText}
-      containerClasses="bg-error z-50"
+      containerClasses="bg-red-300 z-50"
       checked={checked}
       setChecked={setChecked}
       modalID="non-field-error-modal"
