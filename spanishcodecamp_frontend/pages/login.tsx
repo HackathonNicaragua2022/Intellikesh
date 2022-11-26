@@ -25,7 +25,7 @@ const Registro: NextPage = () => {
       .then((res) => {
         setUserData(res.data);
         router.push("sideBar");
-        window.localStorage.setItem("token", String(res.data.token));
+        window.localStorage.setItem("token", `Bearer ${res.data.token}`);
       })
       .catch((err) => {
         console.log(err.response.data);

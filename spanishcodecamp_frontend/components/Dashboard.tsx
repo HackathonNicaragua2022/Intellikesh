@@ -16,8 +16,8 @@ import { API_URL } from "../utils/consts";
 import { generateAxiosConfig } from "../utils/functions";
 
 const Dashboard = () => {
-  const axiosConfig = generateAxiosConfig(window);
   useEffect(() => {
+    const axiosConfig = generateAxiosConfig(window);
     axios
       .get(API_URL + "courses/2", axiosConfig)
       .then((res) => {
@@ -26,7 +26,7 @@ const Dashboard = () => {
       .catch((err) => {
         console.log(err.response.data);
       });
-  }, [axiosConfig]);
+  }, []);
 
   return (
     <div className="flex flex-col items-center px-10">
