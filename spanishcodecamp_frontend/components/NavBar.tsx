@@ -5,7 +5,7 @@ import Logo from "../assets/img/logo-1.png";
 
 const NavBar = () => {
   return (
-    <div className="flex flex-col md:flex-row mt-6 justify-around items-center bg-midnight h-[5rem] text-textColor w-full">
+    <div className="flex flex-col md:flex-row mt-6 mb-4 sm:mb-0 justify-between items-center px-2 md:px-[3rem] bg-midnight h-[5rem] text-textColor w-full">
       <div className="flex items-center justify-center gap-4">
         <Image src={Logo} alt="logo" />
         <span className="text-[1.2rem] font-semibold text-white">

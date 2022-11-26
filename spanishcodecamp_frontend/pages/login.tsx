@@ -33,21 +33,21 @@ const Registro: NextPage = () => {
       </h1>
 
       <form
-        className="relative flex flex-col items-center justify-center w-10/12 p-16 bg-white xl:w-1/2 h-4/6 rounded-3xl z-1"
+        className="relative flex flex-col items-center justify-center w-10/12 bg-white sm:p-16 xl:w-1/2 h-4/6 rounded-3xl z-1"
         onSubmit={handleSubmit}
       >
         <div className="w-4/5">
           <Input
             name="username"
             descriptiveText="Nombre de usuario"
-            placeholder="Escriba su nombre de usuario"
+            placeholder="Usuario"
           />
           <div className="h-12" />
           <Input
             name="password"
             descriptiveText="Contraseña"
             type="password"
-            placeholder="Escriba su contraseña"
+            placeholder="Contraseña"
           />
         </div>
         <br />

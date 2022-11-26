@@ -28,11 +28,11 @@ const Registro: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-midnight">
       <div className="fixed z-0 w-[3000px] rotate-[150deg] bg-gradient-to-r from-purple to-pink h-[1000px]" />
-      <h1 className="relative mb-4 text-5xl font-extrabold tracking-wider text-center text-white z-1">
+      <h1 className="relative mb-4 text-[2rem] sm:text-5xl font-extrabold tracking-wider text-center text-white z-1">
         Crea tu cuenta
       </h1>
       <form
-        className="relative grid grid-cols-2 gap-12 px-16 py-8 bg-white z-1 rounded-3xl"
+        className="relative flex flex-col gap-12 px-4 py-8 mx-2 mb-4 overflow-auto bg-white sm:px-16 sm:grid sm:grid-cols-2 z-1 rounded-xl sm:rounded-3xl"
         onSubmit={handleSubmit}
       >
         <Input
