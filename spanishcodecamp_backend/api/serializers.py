@@ -31,6 +31,30 @@ class LevelSerializer(serializers.ModelSerializer):
         model = Level
         fields = "__all__"
 
+    def to_representation(self, instance):
+        obj = super().to_representation(instance)
+
+        try:
+            completed_level_instance = CompletedLevel.objects.get(
+                user=self.context["request"].user, level=instance
+            )
+            obj["is_solved_by_request_user"] = True
+        except CompletedLevel.DoesNotExist:
+            completed_level_instance = None
+            obj["is_solved_by_request_user"] = False
+
+        if self.context.get("detailed") is True:
+
+            obj["completed_level_info"] = (
+                CompletedLevelSerializer(
+                    completed_level_instance, context=self.context
+                ).data
+                if completed_level_instance is not None
+                else {}
+            )
+
+        return obj
+
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:

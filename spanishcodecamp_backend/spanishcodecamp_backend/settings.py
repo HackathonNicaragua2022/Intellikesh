@@ -146,7 +146,8 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
 }
 
-REST_KNOX = {"AUTH_HEADER_PREFIX": "Bearer", "TOKEN_TTL": timedelta(days=2)}
+# Token TTL is set at 1000 days for testing, all tokens will be deleted after the tests
+REST_KNOX = {"AUTH_HEADER_PREFIX": "Bearer", "TOKEN_TTL": timedelta(days=1000)}
 LANGUAGE_CODE = "es-NI"
 
 CSRF_TRUSTED_ORIGINS = [
