@@ -31,16 +31,6 @@ class LevelSerializer(serializers.ModelSerializer):
         model = Level
         fields = "__all__"
 
-    def to_representation(self, instance):
-        obj = super().to_representation(instance)
-        with open(obj["instructions"], "r") as file:
-            obj["instructions"] = file.read()
-
-        with open(obj["tests"], "r") as file:
-            obj["tests"] = file.read()
-
-        return obj
-
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
