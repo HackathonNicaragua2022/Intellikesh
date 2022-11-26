@@ -64,7 +64,9 @@ class CourseSerializer(serializers.ModelSerializer):
     def to_representation(self, instance: Course):
         obj = super().to_representation(instance)
         if self.context.get("detailed") is True:
-            obj["levels"] = LevelSerializer(instance.levels.all(), many=True).data
+            obj["levels"] = LevelSerializer(
+                instance.levels.all(), many=True, context=self.context
+            ).data
         obj["language_verbose"] = instance.get_language_display()
         obj["estimated_duration"] = instance.course_duration
         return obj
