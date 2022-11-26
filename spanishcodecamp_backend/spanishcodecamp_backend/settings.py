@@ -32,7 +32,8 @@ DEBUG = os.getenv("DJANGO_DEBUG", "True") != "False"
 
 ALLOWED_HOSTS = ["*"]
 
-
+STATIC_ROOT = "/var/www/html/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # Application definition
 
 INSTALLED_APPS = [
