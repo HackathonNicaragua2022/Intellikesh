@@ -12,7 +12,7 @@ from rest_framework.decorators import (
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from api.models import Course, Level, User
+from api.models import CompletedLevel, Course, Level, User
 from api.serializers import CourseSerializer, LevelSerializer, UserSerializer
 from api.utils import ResponseBadRequest, key_error_as_response_bad_request
 
@@ -80,3 +80,34 @@ class CourseView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixi
 class LevelView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     queryset = Level.objects
     serializer_class = LevelSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        context = self.get_serializer_context()
+        context["detailed"] = True
+        serializer = self.get_serializer(instance, context=context)
+        return Response(serializer.data)
+
+
+class CompletedLevelView(
+    GenericViewSet,
+    mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+):
+    queryset = CompletedLevel.objects
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        data = dict(request.data)
+        data["user"] = request.user.id
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )

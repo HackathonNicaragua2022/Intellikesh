@@ -33,11 +33,25 @@ class LevelSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         obj = super().to_representation(instance)
-        with open(obj["instructions"], "r") as file:
-            obj["instructions"] = file.read()
 
-        with open(obj["tests"], "r") as file:
-            obj["tests"] = file.read()
+        try:
+            completed_level_instance = CompletedLevel.objects.get(
+                user=self.context["request"].user, level=instance
+            )
+            obj["is_solved_by_request_user"] = True
+        except CompletedLevel.DoesNotExist:
+            completed_level_instance = None
+            obj["is_solved_by_request_user"] = False
+
+        if self.context.get("detailed") is True:
+
+            obj["completed_level_info"] = (
+                CompletedLevelSerializer(
+                    completed_level_instance, context=self.context
+                ).data
+                if completed_level_instance is not None
+                else {}
+            )
 
         return obj
 
@@ -45,12 +59,14 @@ class LevelSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        exclude = ["path_name"]
+        fields = "__all__"
 
     def to_representation(self, instance: Course):
         obj = super().to_representation(instance)
         if self.context.get("detailed") is True:
-            obj["levels"] = LevelSerializer(instance.levels.all(), many=True).data
+            obj["levels"] = LevelSerializer(
+                instance.levels.all(), many=True, context=self.context
+            ).data
         obj["language_verbose"] = instance.get_language_display()
         obj["estimated_duration"] = instance.course_duration
         return obj

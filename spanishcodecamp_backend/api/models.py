@@ -130,5 +130,6 @@ class CompletedLevel(models.Model):
     solution = models.TextField(max_length=2500, verbose_name=_("solución"))
 
     class Meta:
+        unique_together = ["user", "level"]
         verbose_name = _("nivel completado")
         verbose_name_plural = _("niveles completados")
