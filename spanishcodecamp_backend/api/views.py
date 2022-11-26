@@ -13,7 +13,12 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from api.models import CompletedLevel, Course, Level, User
-from api.serializers import CourseSerializer, LevelSerializer, UserSerializer
+from api.serializers import (
+    CompletedLevelSerializer,
+    CourseSerializer,
+    LevelSerializer,
+    UserSerializer,
+)
 from api.utils import ResponseBadRequest, key_error_as_response_bad_request
 
 # Create your views here.
@@ -96,6 +101,7 @@ class CompletedLevelView(
     mixins.UpdateModelMixin,
 ):
     queryset = CompletedLevel.objects
+    serializer_class = CompletedLevelSerializer
 
     def get_queryset(self):
         queryset = super().get_queryset()
